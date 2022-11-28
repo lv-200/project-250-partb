@@ -1,3 +1,0 @@
-/Users/claireto/CLionProjects/Project250/cmake-build-debug/CMakeFiles/Project250.dir
-/Users/claireto/CLionProjects/Project250/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/claireto/CLionProjects/Project250/cmake-build-debug/CMakeFiles/rebuild_cache.dir
