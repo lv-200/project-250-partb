@@ -41,9 +41,9 @@ public:
 	CourseList() : first(nullptr), last(nullptr), count(0) {}
 
 	// Functions addCourse
-    void addCourse(const Course& aCourse);
-    void addCourse(int courseNumber, const std::string& courseName,
-                   double courseUnits, const std::set<int>& prereqs);
+    void addCourse(const Course& newCourse);
+    void addCourse(int newCourseNumber, const std::string& newCourseName,
+                   int newCourseUnits, const std::set<int>& newPrereqs);
 
 	// Accessor functions
     static std::string getPrefix();
@@ -51,12 +51,12 @@ public:
 	// Boolean functions
     bool getNumberOfCourses() const;
     bool isEmpty() const;
-    Node* searchCourse(int courseNumber) const;
-    void searchCourse(int courseNumber, std::string& courseName) const;
-    void searchCourse(int courseNumber, Course& courseObj) const;
+    Node* searchCourse(int aCourseNumber) const;
+    void searchCourse(int aCourseNumber, std::string& aCourseName) const;
+    void searchCourse(int aCourseNumber, Course& aCourseObj) const;
 
 	// Function deleteCourse
-    void deleteCourse(int courseNumber);
+    void deleteCourse(int aCourseNumber);
 
 	// Function retrieveAllCourses
     void retrieveAllCourses(std::string& courses);
@@ -70,23 +70,23 @@ public:
     CourseList(const CourseList& otherList);
 	
 	// Overloaded assignment operator
-    // CourseList& operator=(const Course& rightSide);
+     CourseList& operator=(const CourseList& rightSide);
 
 	// Destructor
     ~CourseList();
 
 private:
 	// Function getCourseLocation
-    void getCourseLocation(int courseNumber) const;
+    Node* getCourseLocation(int aCourseNumber) const;
 
 	// Function insertInOrder
     void insertInOrder(Node* aNode);
 	
 	// Helper functions for overloaded assignment operator
-    void copyCallingObjIsEmpty(const Course& aCourse);
-    void copyObjectsSameLength(const Course& aCourse);
-    void copyCallingObjLonger(const Course& aCourse);
-    void copyCallingObjShorter(const Course& aCourse);
+    void copyCallingObjIsEmpty(const CourseList& aCourseList);
+    void copyObjectsSameLength(const CourseList& aCourseList);
+    void copyCallingObjLonger(const CourseList& aCourseList);
+    void copyCallingObjShorter(const CourseList& aCourseList);
 
 	Node* first;
 	Node* last;

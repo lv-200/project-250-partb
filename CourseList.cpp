@@ -13,21 +13,24 @@
 #include "CourseList.h"
 
 #include <iostream>
-#include <string> //added
+#include <string>
+#include <sstream>
+
 using namespace std;
 
 // Definition function addCourse
-void CourseList::addCourse(const Course& aCourse)
+void CourseList::addCourse(const Course& newCourse)
 {
-//    insertInOrder(new Node(aCourse, first));
+    insertInOrder(new Node(newCourse, nullptr));
 }
 
 // Definition function addCourse
-void CourseList::addCourse(int courseNumber, const string& courseName,
-                           double courseUnits, const set<int>& prereqs)
+void CourseList::addCourse(int newCourseNumber, const string& newCourseName,
+                           int newCourseUnits, const set<int>& newPrereqs)
 {
-//    Creates a new dynamic node storing a course using all the parameters passed,
-//    and calls the function CourseList::insertInOrder() in one statement.
+    insertInOrder(new Node(Course(newCourseNumber,
+                                  newCourseName, newCourseUnits,
+                                  newPrereqs), nullptr));
 }
 
 // Definition function getPrefix
@@ -50,48 +53,57 @@ bool CourseList::isEmpty() const
 
 // Definition function searchCourse (courseNumber)
 // Assume list is non-empty.
-Node* CourseList::searchCourse(int courseNumber) const
+Node* CourseList::searchCourse(int aCourseNumber) const
 {
-//    Calls function getCourseLocation() to return the location.
-    return nullptr;
+    return getCourseLocation(aCourseNumber);
 }
 
 // Definition function searchCourse (courseNumber, courseName)
 // Assume list is non-empty.
-void CourseList::searchCourse(int courseNumber, std::string& courseName) const
+void CourseList::searchCourse(int aCourseNumber, std::string& aCourseName) const
 {
-//    Calls function getCourseLocation() to determine the location.
-//    Using that pointer, retrieve name of course and save it in param string.
+    aCourseName = getCourseLocation(aCourseNumber)->getCourse().getCourseName();
 }
 
 // Definition function searchCourse(courseNumber, course) 
 // Assume list is non-empty.
-void CourseList::searchCourse(int courseNumber, Course& courseObj) const
+void CourseList::searchCourse(int aCourseNumber, Course& aCourseObj) const
 {
-//    Calls function getCourseLocation() to determine the location.
-//    Save it in the parameter of type Course
+    aCourseObj = getCourseLocation(aCourseNumber)->getCourse();
 }
 
 // Definition deleteCourse
 // Assume list is non-empty.
 // Assume course is in the list.
-void CourseList::deleteCourse(int courseNumber)
+void CourseList::deleteCourse(int aCourseNumber)
 {
-//    Deletes the course from the linked list.
+    Node* current = first;
+    bool found = false;
+    while (current != nullptr && !found)
+    {
+        if (current->getCourse().getCourseNumber() == aCourseNumber)
+        {
+            found = true;
+            delete current;
+            current = nullptr;
+        }
+        current = current->getNext();
+    }
 }
 
 // Definition retrieveAllCourses
 // Assume list is non-empty.
 void CourseList::retrieveAllCourses(string& courses)
 {
-    Node* temp = first;
-    while(temp != nullptr)
+    ostringstream out;
+    Node* current = first;
+    while(current != nullptr)
     {
-        cout << getPrefix()
-            << temp->getCourse().getCourseNumber()
-            << " - " << temp->getCourse().getCourseName() << endl;
+        out << getPrefix()
+            << current->getCourse().getCourseNumber()
+            << " - " << current->getCourse().getCourseName() << endl;
     }
-    // courses = out.str();
+    courses = out.str();
 }
 
 // Definition clearList
@@ -109,8 +121,16 @@ void CourseList::clearList()
 }
 
 // Definition function getCourseLocation
-void CourseList::getCourseLocation(int courseNumber) const
+Node* CourseList::getCourseLocation(int aCourseNumber) const
 {
-    // Searches for the course and returns a pointer to node
+    Node* current = first;
+    while (current != nullptr)
+    {
+        if (current->getCourse().getCourseNumber() == aCourseNumber)
+        {
+            return current;
+        }
+        current = current->getNext();
+    }
 }
 

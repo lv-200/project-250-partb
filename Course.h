@@ -29,7 +29,7 @@ public:
     const std::string& getCourseName() const;
     int getCourseNumber() const;
     int getCourseUnits() const;
-    const std::set<int>& getPrereqs() const;
+    const std::set<int>& getCoursePrereqs() const;
     const Course& getCourse() const;
     static std::string getPrefix();
 
