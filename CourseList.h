@@ -59,7 +59,7 @@ public:
     void deleteCourse(int aCourseNumber);
 
 	// Function retrieveAllCourses
-    void retrieveAllCourses(std::string& courses);
+    void retrieveAllCourses(std::string& courses) const;
 
 	// Function clearList
     void clearList();

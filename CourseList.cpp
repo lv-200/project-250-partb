@@ -93,7 +93,7 @@ void CourseList::deleteCourse(int aCourseNumber)
 
 // Definition retrieveAllCourses
 // Assume list is non-empty.
-void CourseList::retrieveAllCourses(string& courses)
+void CourseList::retrieveAllCourses(string& courses) const
 {
     ostringstream out;
     Node* current = first;
