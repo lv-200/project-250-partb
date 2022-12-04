@@ -3,7 +3,6 @@
 */
 
 #include "CourseList.h"
-
 #include <iostream>
 using namespace std;
 
