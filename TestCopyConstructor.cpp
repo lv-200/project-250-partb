@@ -15,17 +15,17 @@ void testCopyConstructor()
 
 	// To print, create a variable of type string and use it
 	// as an argument to call the function retrieveAllCourses().
-
+	string tester = "";
 
 	// Create an object of the class CourseList named 
 	// courseList1 using the default constructor.
-
+	CourseList courseList1;
 
 	// Create an object of the class CourseList named 
 	// courseList2 using the copy constructor with 
 	// parameter courseList1.
 	// CALL: CourseList courseList1(courseList2)
-
+	
 
 	// Print courseList1 (should be empty)
 
