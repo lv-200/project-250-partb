@@ -3,7 +3,7 @@
 */
 
 #include "CourseList.h"
-#include "CourseList.cpp"
+
 
 #include <iostream>
 using namespace std;

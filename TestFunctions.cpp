@@ -3,9 +3,6 @@
 */
 
 #include "CourseList.h"
-#include "CourseList.cpp" //remove!! for all three below
-#include "Course.h"
-#include "Course.cpp"
 
 #include <iostream>
 using namespace std;
