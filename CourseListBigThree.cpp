@@ -37,9 +37,18 @@ CourseList::CourseList(const CourseList& otherList)
 // Definition overloaded assignment operator
 CourseList& CourseList::operator=(const CourseList& rightSide)
 {
+    Node* ptrCalling = first;
+    Node* ptrParam = rightSide.first;
+
+    while (ptrParam != nullptr)
+    {
+        ptrCalling->setCourse(ptrParam->getCourse());
+        ptrCalling = ptrCalling->getNext();
+        ptrParam = ptrParam->getNext();
+    }
+    
     count = rightSide.count;
-    first = rightSide.first;
-    last = rightSide.last;
+    last = ptrParam;
     return *this;
 }
 
